@@ -18,17 +18,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/charge',(err)=>{
         console.log("connected success fully");
     }
 });
-
-
-
-app.get("/mongo-client/:count",async (req,res)=>{
-    res.send("hi "+req.params.count);
-});
-const Charge = mongoose.model('charge', new mongoose.Schema({
+const Charge = mongoose.model('charge1', new mongoose.Schema({
     r: {
         type: String,
-        required: true,
-        maxlength: 50
+        required: true
     },
     n: {
         type: String
@@ -44,26 +37,27 @@ const Charge = mongoose.model('charge', new mongoose.Schema({
         type: Number
     },
     price: {
-        type: String,
-        maxlength: 50
+        type: String
     },
     sc: {
-        type: String,
-        maxlength: 50
+        type: String
     },
     t: {
-        type: String,
-        maxlength: 50
+        type: String
     },
     text: {
-        type: String,
-        maxlength: 50
+        type: String
     },
     vars: {
-        type: String,
-        maxlength: 50
+        type: String
     }
 }));
+
+
+app.get("/mongo-client/:count",async (req,res)=>{
+    res.send("hi "+req.params.count);
+});
+
 
 app.get("/mongoose/insert", (req,res)=>{
     

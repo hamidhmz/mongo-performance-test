@@ -4,27 +4,88 @@ const express = require("express");
 var app = express();
 var url = require('url');
 
-MongoClient.connect('mongodb://root:123456@172.18.0.1:27047', function (err, con) {
+MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
     if (err) console.log(err);
     let db = con.db('charge');
     let count = 0;
 
-    app.get('/update', function (req,api_res) {
+    db.createCollection("contacts",
+        {
+            validator: {
+                $and: [
+                    {
+                        "r": {
+                            $type: "string"
+                        }
+                    },
+                    {
+                        "n": {
+                            $type: "string"
+                        }
+                    },
+                    {
+                        "pr": {
+                            $type: "int"
+                        }
+                    },
+                    {
+                        "da": {
+                            $type: "date"
+                        }
+                    },
+                    {
+                        "e": {
+                            $type: "int"
+                        }
+                    },
+                    {
+                        "price": {
+                            $type: "string"
+                        }
+                    },
+                    {
+                        "sc": {
+                            $type: "string"
+                        }
+                    },
+                    {
+                        "t": {
+                            $type: "string"
+                        }
+                    },
+                    {
+                        "text": {
+                            $type: "string"
+                        }
+                    },
+                    {
+                        "vars": {
+                            $type: "string"
+                        }
+                    }
+                ]
+            },
 
-        db.collection('one').updateOne({},{        $set:{
+            validationLevel: "strict",
+            validationAction: "error"
+        })
+    app.get('/update', function (req, api_res) {
+
+        db.collection('one').updateOne({}, {
+            $set: {
                 r: "0",
-                n:"09120975633",
+                n: "09120975633",
                 pr: 9,
                 e: count++,
-                price:"sdcdcd",
-                sc:null,
-                t:"05:22:01",
-                text:"",
-                vars:""
+                price: "sdcdcd",
+                sc: null,
+                t: "05:22:01",
+                text: "",
+                vars: ""
             }
-        },function (err ,res) {
-             if (err) console.log(err);
-             api_res.send(200) ;
+        }, function (err, res) {
+            if (err) console.log(err);
+            api_res.send(200);
         })
     });
 
@@ -41,14 +102,14 @@ MongoClient.connect('mongodb://root:123456@172.18.0.1:27047', function (err, con
         count++;
         let obj = {
             r: "0",
-            n:"09120975633",
+            n: "09120975633",
             pr: 9,
             e: 1,
-            price:"3000",
-            sc:null,
-            t:"05:22:01",
-            text:"",
-            vars:""
+            price: "3000",
+            sc: null,
+            t: "05:22:01",
+            text: "",
+            vars: ""
         };
 
 
