@@ -118,6 +118,29 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
         })
 
 
+    });
+
+    app.get('/insert-into-one', function (req, web_res) {
+        count++;
+        let obj = {
+            r: "0",
+            n: "09120975633",
+            pr: 9,
+            e: 1,
+            price: "3000",
+            sc: null,
+            t: "05:22:01",
+            text: "",
+            vars: ""
+        };
+
+
+        db.collection('one').insert(obj, function (err, res) {
+            if (err) console.log(err);
+            web_res.send(200)
+        })
+
+
     })
 
 });
