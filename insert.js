@@ -76,9 +76,28 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
                 r: "0",
                 n: "09120975633",
                 pr: 9,
-                e: count++,
-                price: "sdcdcd",
-                sc: null,
+                e: 1,
+                price: "3000",
+                sc: "null",
+                t: "05:22:01",
+                text: "",
+                vars: ""
+            }
+        }, function (err, res) {
+            if (err) console.log(err);
+            api_res.send(200);
+        })
+    });
+    app.get('/update-into-one', function (req, api_res) {
+
+        db.collection('one').updateOne({}, {
+            $set: {
+                r: "0",
+                n: "09120975633",
+                pr: 9,
+                e: 1,
+                price: "3000",
+                sc: "null",
                 t: "05:22:01",
                 text: "",
                 vars: ""
@@ -94,7 +113,13 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
             if (err) console.log(err);
             api_res.send(200);
         })
+    });
 
+    app.get('/find-into-one', function (req, api_res) {
+        db.collection('one').findOne({}, function (err, res) {
+            if (err) console.log(err);
+            api_res.send(200);
+        })
     });
 
     app.get('/insert', function (req, web_res) {
@@ -105,7 +130,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
             pr: 9,
             e: 1,
             price: "3000",
-            sc: null,
+            sc: "null",
             t: "05:22:01",
             text: "",
             vars: ""
@@ -124,14 +149,14 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
         count++;
         let obj = {
             r: "0",
-            n: "09120975633",
+            n:"09120975633",
             pr: 9,
             e: 1,
-            price: "3000",
-            sc: null,
-            t: "05:22:01",
-            text: "",
-            vars: ""
+            price:"3000",
+            sc:"null",
+            t:"05:22:01",
+            text:"",
+            vars:""
         };
 
 
