@@ -71,7 +71,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
         })
     app.get('/update', function (req, api_res) {
 
-        db.collection('one').updateOne({}, {
+        db.collection('contacts').updateOne({}, {
             $set: {
                 r: "0",
                 n: "09120975633",
@@ -90,7 +90,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
     });
 
     app.get('/find', function (req, api_res) {
-        db.collection('one').findOne({}, function (err, res) {
+        db.collection('contacts').findOne({}, function (err, res) {
             if (err) console.log(err);
             api_res.send(200);
         })
@@ -98,7 +98,6 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
     });
 
     app.get('/insert', function (req, web_res) {
-        console.log('start ');
         count++;
         let obj = {
             r: "0",
@@ -113,7 +112,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
         };
 
 
-        db.collection('one').insert(obj, function (err, res) {
+        db.collection('contacts').insert(obj, function (err, res) {
             if (err) console.log(err);
             web_res.send(200)
         })
@@ -123,7 +122,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
 
 });
 
-app.listen(8080, function (err) {
+app.listen(8085, function (err) {
     if (err) console.log(err);
     console.log('start process on 8080 port ');
 })
