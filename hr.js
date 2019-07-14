@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 
 const mongoose = require("mongoose");
+
+const port = 8080;
 /*
 mongoose.createConnection('mongodb://127.0.0.1:27047/charge', { "auth": { "authSource": "admin" }, user:'root' , pass:'123456',useNewUrlParser: true },(err)=>{
          if (err) console.log(err);
@@ -179,7 +181,7 @@ app.get("/mongoose/select", (req,res)=>{
         })
 });
 
-app.listen(8080,(err)=>{
+app.listen(port,(err)=>{
      if (err) console.log(err);
     console.log("app is running in "+ 8080);
 });

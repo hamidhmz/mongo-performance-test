@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 var app = express();
 var url = require('url');
+const port = 8080;
 
 MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
     if (err) console.log(err);
@@ -165,7 +166,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
 
 });
 
-app.listen(8085, function (err) {
+app.listen(port, function (err) {
     if (err) console.log(err);
     console.log('start process on 8080 port ');
 })
