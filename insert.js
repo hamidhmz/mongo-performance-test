@@ -29,11 +29,6 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
                         }
                     },
                     {
-                        "da": {
-                            $type: "date"
-                        }
-                    },
-                    {
                         "e": {
                             $type: "int"
                         }
@@ -132,8 +127,8 @@ MongoClient.connect('mongodb://127.0.0.1:27017/charge', function (err, con) {
             price: "3000",
             sc: "null",
             t: "05:22:01",
-            text: "",
-            vars: ""
+            text: "fefee",
+            vars: "fefe"
         };
 
 
